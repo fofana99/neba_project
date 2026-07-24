@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import look01 from "@/assets/neba-look-01.jpg";
-import look02 from "@/assets/neba-logo.png";
+import look02 from "@/assets/neba-look-05.jpg";
 import look03 from "@/assets/neba-look-03.jpg";
 import look04 from "@/assets/neba-homme.jpg";
 import artisanImage from "@/assets/neba-look-07.jpeg";
