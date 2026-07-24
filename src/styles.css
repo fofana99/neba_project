@@ -1,0 +1,199 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Nēba — Design System
+ * Marque de mode premium, héritage malinké × modernité.
+ * Palette : Reseda Green #687751 · Vanilla #F9E6A0
+ * Typo : Cormorant Garamond (display) · Inter (texte)
+ */
+
+@theme inline {
+  --font-display: "Cormorant Garamond", "Cormorant", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-reseda: var(--reseda);
+  --color-reseda-deep: var(--reseda-deep);
+  --color-vanilla: var(--vanilla);
+  --color-vanilla-soft: var(--vanilla-soft);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-clay: var(--clay);
+
+  --shadow-luxe: 0 30px 60px -20px color-mix(in oklab, var(--reseda) 25%, transparent);
+  --shadow-soft: 0 8px 30px -12px color-mix(in oklab, var(--ink) 15%, transparent);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand primitives */
+  --reseda: oklch(0.52 0.055 125);          /* #687751 */
+  --reseda-deep: oklch(0.38 0.05 128);
+  --vanilla: oklch(0.94 0.08 95);           /* #F9E6A0 */
+  --vanilla-soft: oklch(0.97 0.035 95);
+  --ivory: oklch(0.985 0.008 90);
+  --ink: oklch(0.18 0.01 90);
+  --clay: oklch(0.58 0.04 60);
+
+  /* Semantic — light (default: ivory canvas, reseda accents) */
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--reseda);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--vanilla-soft);
+  --secondary-foreground: var(--reseda-deep);
+  --muted: oklch(0.955 0.006 90);
+  --muted-foreground: oklch(0.45 0.015 90);
+  --accent: var(--vanilla);
+  --accent-foreground: var(--reseda-deep);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.9 0.012 90);
+  --input: oklch(0.9 0.012 90);
+  --ring: var(--reseda);
+}
+
+.dark {
+  --background: oklch(0.16 0.012 90);
+  --foreground: var(--ivory);
+  --card: oklch(0.22 0.014 90);
+  --card-foreground: var(--ivory);
+  --popover: oklch(0.22 0.014 90);
+  --popover-foreground: var(--ivory);
+  --primary: var(--vanilla);
+  --primary-foreground: var(--ink);
+  --secondary: oklch(0.28 0.02 100);
+  --secondary-foreground: var(--ivory);
+  --muted: oklch(0.24 0.014 90);
+  --muted-foreground: oklch(0.72 0.02 90);
+  --accent: var(--reseda);
+  --accent-foreground: var(--ivory);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--vanilla);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-muted-foreground);
+}
+
+@utility rule-thin {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+}
+
+@utility btn-luxe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border: 1px solid var(--color-primary);
+  transition: all 400ms ease;
+  cursor: pointer;
+}
+
+@utility btn-luxe-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-foreground);
+  border: 1px solid var(--color-foreground);
+  transition: all 400ms ease;
+  cursor: pointer;
+}
+
+@utility input-luxe {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+.input-luxe:focus {
+  border-color: var(--color-foreground);
+}
+
+@keyframes neba-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility fade-up {
+  animation: neba-fade-up 1.2s ease-out both;
+}
